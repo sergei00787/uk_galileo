@@ -7,10 +7,10 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>galileo_controller_emulator</artifactId>
+    <artifactId>galileo_storage</artifactId>
     <packaging>jar</packaging>
 
-    <name>galileo_controller_emulator</name>
+    <name>galileo_storage</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -19,10 +19,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jbond.app</groupId>
-            <artifactId>galileo_main</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.1.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>6.1.5.Final</version>
         </dependency>
     </dependencies>
 </project>

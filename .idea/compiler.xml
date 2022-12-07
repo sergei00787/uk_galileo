@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="galileo_controller_emulator" />
         <module name="galileo_communicator_server" />
         <module name="galileo_main" />
+        <module name="galileo_controller_emulator" />
+        <module name="galileo_storage" />
       </profile>
     </annotationProcessing>
   </component>
