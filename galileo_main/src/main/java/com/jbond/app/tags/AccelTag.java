@@ -1,10 +1,14 @@
 package com.jbond.app.tags;
 
-public class AccelTag implements Tag {
+public class AccelTag extends Tag {
     private short accelX;
     private short accelY;
     private short accelZ;
 
+    public AccelTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {

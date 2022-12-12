@@ -2,24 +2,19 @@ package com.jbond.app.tags;
 
 import com.jbond.app.ByteArr;
 
-public class ShortTag implements Tag {
+public class ShortTag extends Tag {
     private int val;
 
-    /*
-    public static void main(String[] args) throws Exception {
-        ShortTag shortTag = new ShortTag();
-        byte[] inp = ByteArr.fromString("FEFE");
-        shortTag.parse(inp);
-        System.out.println(shortTag.val);
+    public ShortTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
     }
-*/
+
 
     @Override
     public void parse(byte[] byteArr) {
         if (byteArr.length == 1 || byteArr.length == 2) {
             val = ByteArr.convertToInt32(byteArr);
-        } /*else {
-            GalileoPacket.logger.error("������ �������� ���� ShortTag, ������ ��������� ������� ������ 2 ����");
-        }*/
+        }
     }
 }

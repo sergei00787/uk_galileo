@@ -1,21 +1,27 @@
 package com.jbond.app.tags;
 
 import com.jbond.app.ByteArr;
+
 import java.util.Arrays;
 
-public class CanA1Tag implements Tag {
+public class CanA1Tag extends Tag {
     private byte[] bytes;
     private int fuelLevelPersent;
     private int tempCoolingLiquid;
     private int engRpm;
+
+    public CanA1Tag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {
         byte[] reversedBytes = ByteArr.reverseBytes(byteArr);
         bytes = reversedBytes;
         fuelLevelPersent = (int) ((byteArr[0] & 0xFF) * 0.4);
-        tempCoolingLiquid =  (byteArr[1] & 0xFF) - 40;
-        engRpm = (int) (ByteArr.convertToInt32(Arrays.copyOfRange(byteArr,2,4)) * 0.125);
+        tempCoolingLiquid = (byteArr[1] & 0xFF) - 40;
+        engRpm = (int) (ByteArr.convertToInt32(Arrays.copyOfRange(byteArr, 2, 4)) * 0.125);
     }
 
     public byte[] getBytes() {

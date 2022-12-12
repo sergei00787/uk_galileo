@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GalileoTagTable {
-    private Map<Byte,TagDescr> table = new HashMap<Byte, TagDescr>();
+    private final Map<Byte, TagDescr> table;
+
     public GalileoTagTable() {
-        this.table = new HashMap<Byte, TagDescr>();
+        this.table = new HashMap<>();
         table.put((byte) 0x01, new TagDescr(1, "uint"));
         table.put((byte) 0x02, new TagDescr(1, "uint"));
         table.put((byte) 0x03, new TagDescr(15, "string"));
@@ -52,14 +53,14 @@ public class GalileoTagTable {
         table.put((byte) 0x6D, new TagDescr(3, "dut3b"));
         table.put((byte) 0x6E, new TagDescr(3, "dut3b"));
         table.put((byte) 0x6F, new TagDescr(3, "dut3b"));
-        table.put((byte) 0x70, new TagDescr(2, "tempSens"));
-        table.put((byte) 0x71, new TagDescr(2, "tempSens"));
-        table.put((byte) 0x72, new TagDescr(2, "tempSens"));
-        table.put((byte) 0x73, new TagDescr(2, "tempSens"));
-        table.put((byte) 0x74, new TagDescr(2, "tempSens"));
-        table.put((byte) 0x75, new TagDescr(2, "tempSens"));
-        table.put((byte) 0x76, new TagDescr(2, "tempSens"));
-        table.put((byte) 0x77, new TagDescr(2, "tempSens"));
+        table.put((byte) 0x70, new TagDescr(2, "tempsens"));
+        table.put((byte) 0x71, new TagDescr(2, "tempsens"));
+        table.put((byte) 0x72, new TagDescr(2, "tempsens"));
+        table.put((byte) 0x73, new TagDescr(2, "tempsens"));
+        table.put((byte) 0x74, new TagDescr(2, "tempsens"));
+        table.put((byte) 0x75, new TagDescr(2, "tempsens"));
+        table.put((byte) 0x76, new TagDescr(2, "tempsens"));
+        table.put((byte) 0x77, new TagDescr(2, "tempsens"));
         table.put((byte) 0x78, new TagDescr(2, "uint"));
         table.put((byte) 0x79, new TagDescr(2, "uint"));
         table.put((byte) 0x80, new TagDescr(3, "ds1923"));
@@ -151,6 +152,17 @@ public class GalileoTagTable {
         table.put((byte) 0xE7, new TagDescr(4, "bytearr"));
         table.put((byte) 0xE8, new TagDescr(4, "bytearr"));
         table.put((byte) 0xE9, new TagDescr(4, "bytearr"));
-        table.put((byte) 0xEA, new TagDescr(0, "userData"));
+        table.put((byte) 0xEA, new TagDescr(-1, "userdata"));
+    }
+
+    public TagDescr getTagDescr(byte tag) {
+        try {
+            return table.get(tag);
+        } catch (ClassCastException ccex) {
+            System.err.println(ccex.getMessage());
+        } catch (NullPointerException npe) {
+            System.err.println(npe.getMessage());
+        }
+        return null;
     }
 }

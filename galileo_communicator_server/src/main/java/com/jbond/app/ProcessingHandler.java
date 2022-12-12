@@ -1,7 +1,7 @@
 package com.jbond.app;
 
-import com.jbond.app.galileo.entities.GalileoIncomingPackageService;
-import com.jbond.app.galileo.entities.GalileoPackage;
+import com.jbond.app.galileo.storage.entities.GalileoIncomingPackageService;
+import com.jbond.app.galileo.storage.entities.GalileoPackage;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.ReferenceCountUtil;
@@ -28,7 +28,7 @@ public class ProcessingHandler extends SimpleChannelInboundHandler<byte[]> {
             GalileoPacket packet = new GalileoPacket(msg);
 
             if (GalileoPacket.isValid(msg)) {
-                System.out.println("Insert packet in DB");
+                //System.out.println("Insert packet in DB");
 
                 GalileoIncomingPackageService incomingPackageService = new GalileoIncomingPackageService();
                 GalileoPackage galileoPackage = new GalileoPackage(packet.getTagsData());

@@ -4,15 +4,20 @@ import com.jbond.app.ByteArr;
 
 import java.util.Arrays;
 
-public class UserDataTag implements Tag {
+public class UserDataTag extends Tag {
     private int length;
     private byte[] data;
+
+    public UserDataTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {
         length = (byteArr[0] & 0xFF);
         byte[] revercedBytes = ByteArr.reverseBytes(byteArr);
-        data = Arrays.copyOfRange(revercedBytes,0, length );
+        data = Arrays.copyOfRange(revercedBytes, 0, length);
     }
 
     /*

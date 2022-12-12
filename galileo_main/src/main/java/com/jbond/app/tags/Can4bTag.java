@@ -1,10 +1,15 @@
 package com.jbond.app.tags;
 
-public class Can4bTag implements Tag{
+public class Can4bTag extends Tag {
     private byte val1b;
     private byte val2b;
     private byte val3b;
     private byte val4b;
+
+    public Can4bTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {

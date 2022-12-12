@@ -23,7 +23,7 @@
         <!--property name="hibernate.default_schema">public</property-->
 
 
-        <mapping class="com.jbond.app.galileo.entities.GalileoPackage"/>
+        <mapping class="com.jbond.app.galileo.storage.entities.GalileoPackage"/>
 <!--        <mapping class="ru.javastudy.hibernate.dao.ContactHobbyDetailEntity"/>-->
 <!--        <mapping class="ru.javastudy.hibernate.dao.ContactTelDetailEntity"/>-->
 <!--        <mapping class="ru.javastudy.hibernate.dao.HobbyEntity"/>-->

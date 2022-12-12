@@ -1,8 +1,11 @@
-package com.jbond.app.galileo.entities;
+package com.jbond.app.galileo.storage.entities;
 
-import com.jbond.app.galileo.HibernateSessionFactoryUtil;
+import com.jbond.app.galileo.storage.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class GalileoIncomingPackageDAOImpl implements GalileoIncomingPackageDAO {
     @Override
@@ -49,5 +52,23 @@ public class GalileoIncomingPackageDAOImpl implements GalileoIncomingPackageDAO 
             System.err.println();
             if (tx != null) tx.rollback();
         }
+    }
+
+    @Override
+    public List<GalileoPackage> selectGalileoPkg(int rowCount) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try (session) {
+            tx = session.beginTransaction();
+            Query<GalileoPackage> query = session.createQuery("from GalileoPackage order by id ")
+                    .setMaxResults(rowCount);
+
+            List<GalileoPackage> result = query.list();
+            return result;
+        } catch (Exception ex) {
+            System.err.println();
+            if (tx != null) tx.rollback();
+        }
+        return null;
     }
 }

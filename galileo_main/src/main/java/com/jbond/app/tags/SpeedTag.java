@@ -5,9 +5,14 @@ import com.jbond.app.ByteArr;
 
 import java.util.Arrays;
 
-public class SpeedTag implements Tag {
+public class SpeedTag extends Tag {
     private float speed;
     private int course;
+
+    public SpeedTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {

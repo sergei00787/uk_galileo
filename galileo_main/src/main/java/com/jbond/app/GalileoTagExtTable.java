@@ -201,4 +201,15 @@ public class GalileoTagExtTable {
         table.put((byte) 0xF9, new TagDescr(3, "bytearr"));
         table.put((byte) 0xFA, new TagDescr(3, "bytearr"));
     }
+
+    public TagDescr getTagDescr(byte tag){
+        try {
+            return table.get(tag);
+        } catch (ClassCastException ccex){
+            System.err.println(ccex.getMessage());
+        } catch (NullPointerException npe) {
+            System.err.println(npe.getMessage());
+        }
+        return null;
+    }
 }

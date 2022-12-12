@@ -4,8 +4,13 @@ import com.jbond.app.ByteArr;
 
 import java.io.IOException;
 
-public class StringTag implements Tag {
+public class StringTag extends Tag {
     private String val;
+
+    public StringTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {
@@ -22,14 +27,5 @@ public class StringTag implements Tag {
         return val;
     }
 
-    /*
-    public static void main(String[] args) throws Exception {
-        StringTag stringTag = new StringTag();
-        String str = "String Tag FOREVER";
-        byte[] inp = str.getBytes();
-//        byte[] inp = ByteArr.fromString("FF4567FE5776");
-        stringTag.parse(inp);
-        System.out.println(stringTag.val);
-    }
-    */
+
 }

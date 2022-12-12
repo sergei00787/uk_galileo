@@ -1,11 +1,16 @@
 package com.jbond.app.tags;
 
-public class BitsTag implements Tag {
+public class BitsTag extends Tag {
     private String val;
+
+    public BitsTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {
-        switch (byteArr.length){
+        switch (byteArr.length) {
             case 1:
                 val = Integer.toBinaryString(Byte.toUnsignedInt(byteArr[0]));
                 break;
@@ -13,15 +18,14 @@ public class BitsTag implements Tag {
                 val = Integer.toBinaryString(Byte.toUnsignedInt(byteArr[1])) + Integer.toBinaryString(Byte.toUnsignedInt(byteArr[0]));
                 break;
             //default:
-              //  GalileoPacket.logger.error("������ �������� ���� BitsTag, ������ ��������� ������� ������ 2 ����");
+            //  GalileoPacket.logger.error("������ �������� ���� BitsTag, ������ ��������� ������� ������ 2 ����");
         }
     }
 
-    public boolean getValueByIndex(int indexBit){
+    public boolean getValueByIndex(int indexBit) {
         if (indexBit > this.val.length()) return false;
 
-        if (this.val.substring(indexBit,indexBit+1).equals("1")) return true;
-        return false;
+        return this.val.charAt(indexBit) == '1';
     }
 
 /*

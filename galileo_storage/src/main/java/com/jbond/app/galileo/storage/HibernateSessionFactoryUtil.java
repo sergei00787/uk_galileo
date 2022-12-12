@@ -1,6 +1,6 @@
-package com.jbond.app.galileo;
+package com.jbond.app.galileo.storage;
 
-import com.jbond.app.galileo.entities.GalileoPackage;
+import com.jbond.app.galileo.storage.entities.GalileoPackage;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

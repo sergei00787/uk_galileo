@@ -5,9 +5,14 @@ import com.jbond.app.ByteArr;
 
 import java.util.Arrays;
 
-public class FuelSensTag implements Tag{
+public class FuelSensTag extends Tag{
     private int level;
     private int temperature;
+
+    public FuelSensTag(byte name, byte[] byteValue) {
+        super(name, byteValue);
+        parse(byteValue);
+    }
 
     @Override
     public void parse(byte[] byteArr) {
